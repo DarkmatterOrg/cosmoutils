@@ -1,0 +1,10 @@
+pub mod msg;
+pub mod detect_os;
+pub mod is_root;
+pub mod init;
+pub mod bedrock;
+pub mod is_cmd_installed;
+pub mod process_running;
+pub mod file_contains;
+pub mod nixos;
+pub mod notifications;

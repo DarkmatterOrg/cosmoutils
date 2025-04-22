@@ -1,0 +1,13 @@
+[package]
+name = "cosmoutils"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cli_input = "1.0.4"
+colored = "3.0.0"
+directories = "6.0.0"
+libc = "0.2.172"
+notify-rust = "4.11.7"
+regex = "1.11.1"
+which = "7.0.3"
