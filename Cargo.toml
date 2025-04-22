@@ -2,6 +2,9 @@
 name = "cosmoutils"
 version = "0.1.0"
 edition = "2024"
+repository = "https://github.com/DarkmatterOrg/cosmoutils"
+description = "Useful utilities for writting Rust CLI tools"
+license = "MIT"
 
 [dependencies]
 cli_input = "1.0.4"
