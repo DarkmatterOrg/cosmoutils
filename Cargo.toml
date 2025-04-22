@@ -3,6 +3,7 @@ name = "cosmoutils"
 version = "0.1.0"
 edition = "2024"
 repository = "https://github.com/DarkmatterOrg/cosmoutils"
+documentation = "https://docs.rs/cosmoutils/"
 description = "Useful utilities for writting Rust CLI tools"
 license = "MIT"
 
