@@ -4,7 +4,14 @@ use std::process::Command;
 
 use super::msg::info;
 
+/// Check if Bedrock is present
+/*
+    Example:
+    if check_bedrock() {
+        // Code
+    }
 
+*/
 fn check_bedrock() -> bool {
     if Path::new("/bedrock").exists() {
         return true
@@ -12,6 +19,12 @@ fn check_bedrock() -> bool {
         false
     }
 }
+
+/// Get the count of stratas on a Bedrock system
+/*
+    Example
+    println!("Count: {}", list_strata());
+*/
 
 pub fn list_strata() -> usize {
     if !check_bedrock() {
@@ -28,9 +41,15 @@ pub fn list_strata() -> usize {
     return count;
 }
 
-pub fn detect_stratum_init() {
+/// Detect what stratum is providing the init
+/*
+    Example
+    println!("Strata: {}", detect_stratum_init());
+
+*/
+pub fn detect_stratum_init() -> String {
     if !check_bedrock() {
-        return;
+        std::process::exit(1)
     }
 
     let command = Command::new("brl")
@@ -43,5 +62,5 @@ pub fn detect_stratum_init() {
 
     let output = format!("{}", output_str);
 
-    info(&output);
+    return output
 }
