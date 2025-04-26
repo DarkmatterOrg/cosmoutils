@@ -3,4 +3,4 @@
 
 #![allow(dead_code)]
 
-mod modules;
+pub mod modules;
