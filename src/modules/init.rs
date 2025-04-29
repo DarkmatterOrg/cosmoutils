@@ -10,10 +10,12 @@ const FAILED_ENABLE_MESSAGE: &str = "Failed to enable";
 const FAILED_DISABLE_MESSAGE: &str = "Failed to disable";
 
 /// Enable a runit service by making a symlink from /etc/sv to /var/service
-/*
-    Example
-    enable_runit_service("NetworkManager")
-*/
+///
+/// ## Example
+/// ```rust
+/// enable_runit_service("NetworkManager")
+/// ```
+///
 pub fn enable_runit_service(service_name: String) -> std::io::Result<()> {
     let service_dest = "/var/service";
 
@@ -34,10 +36,12 @@ pub fn enable_runit_service(service_name: String) -> std::io::Result<()> {
 }
 
 /// Disable a runit service by removing the symlink from /var/service
-/*
-    Example
-    disable_runit_service("NetworkManager")
-*/
+///
+/// ## Example
+/// ```rust
+/// disable_runit_service("NetworkManager")
+/// ```
+///
 pub fn disable_runit_service(service_name: String) -> std::io::Result<()> {
     let service_dest = "/var/service";
 
@@ -55,13 +59,16 @@ pub fn disable_runit_service(service_name: String) -> std::io::Result<()> {
 }
 
 /// Enable a openRC service by running rc-update add or rc-update --user add
-/*
-    Example (system-service)
-    enable_openrc_service("NetworkManager", false)
-
-    Example (user-service)
-    enable_openrc_service("pipewire", true)
-*/
+///
+/// ## Example (system-service)
+/// ```rust
+/// enable_openrc_service("NetworkManager", false)
+/// ```
+/// ## Example (user-service)
+/// ```rust
+/// enable_openrc_service("pipewire", true)
+/// ```
+///
 pub fn enable_openrc_service(service_name: String, user_mode: bool) {
     let user = std::env::var("USER").unwrap();
 
@@ -100,13 +107,16 @@ pub fn enable_openrc_service(service_name: String, user_mode: bool) {
 
 
 /// Disable a openRC service by running rc-update del or rc-update --user del
-/*
-    Example (system-service)
-    disable_openrc_service("NetworkManager", false)
-
-    Example (user-service)
-    disable_openrc_service("pipewire", true)
-*/
+///
+/// ## Example (system-service)
+/// ```rust
+/// disable_openrc_service("NetworkManager", false)
+/// ```
+/// ## Example (user-service)
+/// ```rust
+/// disable_openrc_service("pipewire", true)
+/// ```
+///
 pub fn disable_openrc_service(service_name: String, user_mode: bool) {
     let user = std::env::var("USER").unwrap();
 
@@ -145,13 +155,16 @@ pub fn disable_openrc_service(service_name: String, user_mode: bool) {
 
 
 /// Enable a Dinit service by running dinitctl enable
-/*
-    Example (system-service)
-    enable_dinit_service("NetworkManager")
-
-    Example (user-service)
-    enable_dinit_service("pipewire")
-*/
+///
+/// ## Example (system-service)
+/// ```rust
+/// enable_dinit_service("NetworkManager")
+/// ```
+/// ## Example (user-service)
+/// ```rust
+/// enable_dinit_service("pipewire")
+/// ```
+///
 pub fn enable_dinit_service(service_name: String) {
     let mut command = Command::new("dinitctl")
         .args(["enable", &service_name])
@@ -170,13 +183,16 @@ pub fn enable_dinit_service(service_name: String) {
 }
 
 /// Disable a Dinit service by running dinitctl disable
-/*
-    Example (system-service)
-    disable_dinit_service("NetworkManager")
-
-    Example (user-service)
-    disable_dinit_service("pipewire")
-*/
+///
+/// ## Example (system-service)
+/// ```rust
+/// disable_dinit_service("NetworkManager")
+/// ```
+/// ## Example (user-service)
+/// ```rust
+/// disable_dinit_service("pipewire")
+/// ```
+///
 pub fn disable_dinit_service(service_name: String) {
     let mut command = Command::new("dinitctl")
         .args(["disable", &service_name])
@@ -195,13 +211,16 @@ pub fn disable_dinit_service(service_name: String) {
 }
 
 /// Enable a Systemd service by running systemctl enable or systemctl --user enable
-/*
-    Example (system-service)
-    enable_systemd_service("NetworkManager", false)
-
-    Example (user-service)
-    enable_systemd_service("pipewire", true)
-*/
+///
+/// ## Example (system-service)
+/// ```rust
+/// enable_systemd_service("NetworkManager", false)
+/// ```
+/// ## Example (user-service)
+/// ```rust
+/// enable_systemd_service("pipewire", true)
+/// ```
+///
 pub fn enable_systemd_service(service_name: String, user_mode: bool) {
     if user_mode {
         let mut command = Command::new("systemctl")
@@ -237,13 +256,16 @@ pub fn enable_systemd_service(service_name: String, user_mode: bool) {
 }
 
 /// Disable a Systemd service by running systemctl disable or systemctl --user disable
-/*
-    Example (system-service)
-    disable_systemd_service("NetworkManager", false)
-
-    Example (user-service)
-    disable_systemd_service("pipewire", true)
-*/
+///
+/// ## Example (system-service)
+/// ```rust
+/// disable_systemd_service("NetworkManager", false)
+/// ```
+/// ## Example (user-service)
+/// ```rust
+/// disable_systemd_service("pipewire", true)
+/// ```
+///
 pub fn disable_systemd_service(service_name: String, user_mode: bool) {
     if user_mode {
         let mut command = Command::new("systemctl")

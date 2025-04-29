@@ -1,7 +1,15 @@
 use std::fs;
 use std::path::{Path, PathBuf};
 
-
+/// Chec if a process is running
+///
+/// ## Example
+/// ```rust
+/// if is_process_running("firefox") {
+///     // Code
+/// }
+/// ```
+///
 pub fn is_process_running(target_name: &str) -> bool {
     let proc_dir = Path::new("/proc");
 

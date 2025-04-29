@@ -2,6 +2,12 @@ use std::path::Path;
 use regex::Regex;
 
 /// get_os() gets the system name from /etc/os-release or in case of Bedrock from /bedrock/etc/os-release
+/// 
+/// ## Example
+/// ```rust
+/// println!("OS: {}", get_os());
+/// ```
+///
 pub fn get_os() -> String {
     let os_release_path: &str;
 
