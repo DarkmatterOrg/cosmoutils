@@ -8,6 +8,8 @@ const DISABLE_MESSAGE: &str = "Disabled";
 const ENABLE_MESSAGE: &str = "Enabled";
 const FAILED_ENABLE_MESSAGE: &str = "Failed to enable";
 const FAILED_DISABLE_MESSAGE: &str = "Failed to disable";
+const SET_MESSAGE: &str = "Set target to";
+const FAILED_SET_MESSAGE: &str = "Failed to set target to";
 
 /// Enable a runit service by making a symlink from /etc/sv to /var/service
 ///
@@ -105,7 +107,6 @@ pub fn enable_openrc_service(service_name: String, user_mode: bool) {
     }
 }
 
-
 /// Disable a openRC service by running rc-update del or rc-update --user del
 ///
 /// ## Example (system-service)
@@ -152,7 +153,6 @@ pub fn disable_openrc_service(service_name: String, user_mode: bool) {
         }
     }
 }
-
 
 /// Enable a Dinit service by running dinitctl enable
 ///
@@ -297,5 +297,29 @@ pub fn disable_systemd_service(service_name: String, user_mode: bool) {
         } else {
             success(&msg);
         }
+    }
+}
+
+/// Switch to a different systemd target
+///
+/// ## Example
+/// ```rust
+/// set_systemd_target("multi-user");
+/// ```
+///
+pub fn set_systemd_target(target_name: String) {
+    let mut command = Command::new("systemctl")
+        .args(["isolate", &target_name])
+        .spawn()
+        .expect("Failed to run");
+    let msg = format!("{} {}", SET_MESSAGE, target_name);
+    let failed_msg = format!("{} {}", FAILED_SET_MESSAGE, target_name);
+
+    let status = command.wait().expect("Failed to run the command.");
+
+    if !status.success() {
+        error(&failed_msg)
+    } else {
+        success(&msg);
     }
 }
