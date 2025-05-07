@@ -22,10 +22,10 @@ pub fn get_os() -> String {
     return system_name.unwrap_or("Unknown".to_string());
 }
 
-/// Gets the value of PRETTY_NAME using Regex
+/// Gets the value of ID using Regex
 fn read_os_release(path: &str) -> Option<String> {
     let content = std::fs::read_to_string(path).ok()?;
-    let re = Regex::new(r#"(?m)^PRETTY_NAME=(?:(?:"(.*?)")|(?:(.*)))$"#).ok()?;
+    let re = Regex::new(r#"(?m)^ID=(?:(?:"(.*?)")|(?:(.*)))$"#).ok()?;
     let captures = re.captures(&content)?;
 
     captures.get(2).or(captures.get(1)).map(|m| m.as_str().to_string())
