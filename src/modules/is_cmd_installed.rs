@@ -8,8 +8,6 @@ use which::which;
 /// }
 /// ```
 ///
-pub fn is_cmd_installed(command: String) -> bool {
-    let result = which(command).unwrap().exists();
-
-    return result;
+pub fn is_cmd_installed(command: &str) -> bool {
+    which(command).map(|path| path.exists()).unwrap_or(false)
 }
