@@ -9,7 +9,7 @@ use colored::Colorize;
 /// ```
 ///
 pub fn error(msg: &str) {
-    print!("{}: {}", "ERROR".bold().red(), msg);
+    println!("{}: {}", "ERROR".bold().red(), msg);
 }
 
 /// INFO:
@@ -21,7 +21,7 @@ pub fn error(msg: &str) {
 /// ```
 ///
 pub fn info(msg: &str) {
-    print!("{}: {}", "INFO".bold().cyan(), msg);
+    println!("{}: {}", "INFO".bold().cyan(), msg);
 }
 
 /// NOTICE:
@@ -33,7 +33,7 @@ pub fn info(msg: &str) {
 /// ```
 ///
 pub fn notice(msg: &str) {
-    print!("{}: {}", "NOTICE".bold().blue(), msg);
+    println!("{}: {}", "NOTICE".bold().blue(), msg);
 }
 
 /// WARN:
@@ -45,7 +45,7 @@ pub fn notice(msg: &str) {
 /// ```
 ///
 pub fn warn(msg: &str) {
-    print!("{}: {}", "WARN".bold().yellow(), msg);
+    println!("{}: {}", "WARN".bold().yellow(), msg);
 }
 
 /// SUGGEST:
@@ -57,7 +57,7 @@ pub fn warn(msg: &str) {
 /// ```
 ///
 pub fn suggest(msg: &str) {
-    print!("{}: {}", "SUGGEST".bold().magenta(), msg);
+    println!("{}: {}", "SUGGEST".bold().magenta(), msg);
 }
 
 /// SUCCESS:
@@ -69,5 +69,5 @@ pub fn suggest(msg: &str) {
 /// ```
 ///
 pub fn success(msg: &str) {
-    print!("{}: {}", "SUCCESS".bold().green(), msg);
+    println!("{}: {}", "SUCCESS".bold().green(), msg);
 }
