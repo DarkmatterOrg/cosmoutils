@@ -4,6 +4,7 @@ use std::path::Path;
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::nixos::running_on_nixos;
 /// if running_on_nixos() {
 ///     // Code
 /// }

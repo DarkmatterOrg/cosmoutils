@@ -4,9 +4,10 @@ use std::fs;
 /// 
 /// ## Example
 /// ```rust
-///    if does_file_contain("test.txt", "hello!") {
+///  use cosmoutils::modules::file_contains::does_file_contain;
+///  if does_file_contain("test.txt", "hello!") {
 ///        // Code
-///    }
+///  }
 /// ```
 ///
 pub fn does_file_contain(filepath: &str, text: &str) -> bool {

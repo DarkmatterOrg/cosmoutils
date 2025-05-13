@@ -4,6 +4,7 @@ use notify_rust::Notification;
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::notifications::error_notification;
 /// error_notification("Hello, world", "foo", "firefox", 1200);
 /// ```
 ///
@@ -15,6 +16,7 @@ pub fn error_notification(title: &str, content: &str, appname: &str, time: i32) 
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::notifications::warn_notification;
 /// warn_notification("Hello, world", "foo", "firefox", 1200);
 /// ```
 ///
@@ -26,6 +28,7 @@ pub fn warn_notification(title: &str, content: &str, appname: &str, time: i32) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::notifications::info_notification;
 /// info_notification("Hello, world", "foo", "firefox", 1200);
 /// ```
 ///
@@ -37,6 +40,7 @@ pub fn info_notification(title: &str, content: &str, appname: &str, time: i32) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::notifications::success_notification;
 /// success_notification("Hello, world", "foo", "firefox", 1200);
 /// ```
 ///

@@ -4,6 +4,7 @@ use colored::Colorize;
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::msg::error;
 /// error("Text");
 /// ```
 ///
@@ -15,6 +16,7 @@ pub fn error(msg: &str) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::msg::info;
 /// info("Text");
 /// ```
 ///
@@ -26,6 +28,7 @@ pub fn info(msg: &str) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::msg::notice;
 /// notice("Text");
 /// ```
 ///
@@ -37,6 +40,7 @@ pub fn notice(msg: &str) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::msg::warn;
 /// warn("Text");
 /// ```
 ///
@@ -48,6 +52,7 @@ pub fn warn(msg: &str) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::msg::suggest;
 /// suggest("Text");
 /// ```
 ///
@@ -59,6 +64,7 @@ pub fn suggest(msg: &str) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::msg::success;
 /// success("Text");
 /// ```
 ///

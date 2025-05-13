@@ -8,6 +8,7 @@ use super::msg::info;
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::bedrock::check_bedrock;
 /// if check_bedrock() {
 ///     // Code
 /// }
@@ -25,6 +26,7 @@ pub fn check_bedrock() -> bool {
 /// 
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::bedrock::list_strata;
 /// println!("Count of stratums: {}", list_strata());
 /// ```
 ///
@@ -47,6 +49,7 @@ pub fn list_strata() -> usize {
 /// 
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::bedrock::detect_stratum_init;
 /// println!("Strata: {}", detect_stratum_init());
 /// ```
 ///

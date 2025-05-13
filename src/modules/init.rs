@@ -15,10 +15,11 @@ const FAILED_SET_MESSAGE: &str = "Failed to set target to";
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::init::enable_runit_service;
 /// enable_runit_service("NetworkManager")
 /// ```
 ///
-pub fn enable_runit_service(service_name: String) -> std::io::Result<()> {
+pub fn enable_runit_service(service_name: &str) -> std::io::Result<()> {
     let service_dest = "/var/service";
 
     let service_symlink = fs::symlink(
@@ -41,10 +42,11 @@ pub fn enable_runit_service(service_name: String) -> std::io::Result<()> {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::init::disable_runit_service;
 /// disable_runit_service("NetworkManager")
 /// ```
 ///
-pub fn disable_runit_service(service_name: String) -> std::io::Result<()> {
+pub fn disable_runit_service(service_name: &str) -> std::io::Result<()> {
     let service_dest = "/var/service";
 
     let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
@@ -64,14 +66,16 @@ pub fn disable_runit_service(service_name: String) -> std::io::Result<()> {
 ///
 /// ## Example (system-service)
 /// ```rust
+/// use cosmoutils::modules::init::enable_openrc_service;
 /// enable_openrc_service("NetworkManager", false)
 /// ```
 /// ## Example (user-service)
 /// ```rust
+/// use cosmoutils::modules::init::enable_openrc_service;
 /// enable_openrc_service("pipewire", true)
 /// ```
 ///
-pub fn enable_openrc_service(service_name: String, user_mode: bool) {
+pub fn enable_openrc_service(service_name: &str, user_mode: bool) {
     let user = std::env::var("USER").unwrap();
 
     if user_mode && Path::new(&format!("/etc/init.d/{}.{}", user, user)).exists() {
@@ -111,14 +115,16 @@ pub fn enable_openrc_service(service_name: String, user_mode: bool) {
 ///
 /// ## Example (system-service)
 /// ```rust
+/// use cosmoutils::modules::init::disable_openrc_service;
 /// disable_openrc_service("NetworkManager", false)
 /// ```
 /// ## Example (user-service)
 /// ```rust
+/// use cosmoutils::modules::init::disable_openrc_service;
 /// disable_openrc_service("pipewire", true)
 /// ```
 ///
-pub fn disable_openrc_service(service_name: String, user_mode: bool) {
+pub fn disable_openrc_service(service_name: &str, user_mode: bool) {
     let user = std::env::var("USER").unwrap();
 
     if user_mode && Path::new(&format!("/etc/init.d/{}.{}", user, user)).exists() {
@@ -158,14 +164,16 @@ pub fn disable_openrc_service(service_name: String, user_mode: bool) {
 ///
 /// ## Example (system-service)
 /// ```rust
+/// use cosmoutils::modules::init::enable_dinit_service;
 /// enable_dinit_service("NetworkManager")
 /// ```
 /// ## Example (user-service)
 /// ```rust
+/// use cosmoutils::modules::init::enable_dinit_service;
 /// enable_dinit_service("pipewire")
 /// ```
 ///
-pub fn enable_dinit_service(service_name: String) {
+pub fn enable_dinit_service(service_name: &str) {
     let mut command = Command::new("dinitctl")
         .args(["enable", &service_name])
         .spawn()
@@ -186,14 +194,16 @@ pub fn enable_dinit_service(service_name: String) {
 ///
 /// ## Example (system-service)
 /// ```rust
+/// use cosmoutils::modules::init::disable_dinit_service;
 /// disable_dinit_service("NetworkManager")
 /// ```
 /// ## Example (user-service)
 /// ```rust
+/// use cosmoutils::modules::init::disable_dinit_service;
 /// disable_dinit_service("pipewire")
 /// ```
 ///
-pub fn disable_dinit_service(service_name: String) {
+pub fn disable_dinit_service(service_name: &str) {
     let mut command = Command::new("dinitctl")
         .args(["disable", &service_name])
         .spawn()
@@ -214,14 +224,16 @@ pub fn disable_dinit_service(service_name: String) {
 ///
 /// ## Example (system-service)
 /// ```rust
+/// use cosmoutils::modules::init::enable_systemd_service;
 /// enable_systemd_service("NetworkManager", false)
 /// ```
 /// ## Example (user-service)
 /// ```rust
+/// use cosmoutils::modules::init::enable_systemd_service;
 /// enable_systemd_service("pipewire", true)
 /// ```
 ///
-pub fn enable_systemd_service(service_name: String, user_mode: bool) {
+pub fn enable_systemd_service(service_name: &str, user_mode: bool) {
     if user_mode {
         let mut command = Command::new("systemctl")
             .args(["--user", "enable", &service_name])
@@ -259,14 +271,16 @@ pub fn enable_systemd_service(service_name: String, user_mode: bool) {
 ///
 /// ## Example (system-service)
 /// ```rust
+/// use cosmoutils::modules::init::disable_systemd_service;
 /// disable_systemd_service("NetworkManager", false)
 /// ```
 /// ## Example (user-service)
 /// ```rust
+/// use cosmoutils::modules::init::disable_systemd_service;
 /// disable_systemd_service("pipewire", true)
 /// ```
 ///
-pub fn disable_systemd_service(service_name: String, user_mode: bool) {
+pub fn disable_systemd_service(service_name: &str, user_mode: bool) {
     if user_mode {
         let mut command = Command::new("systemctl")
             .args(["--user", "disable", &service_name])
@@ -304,10 +318,11 @@ pub fn disable_systemd_service(service_name: String, user_mode: bool) {
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::init::set_systemd_target;
 /// set_systemd_target("multi-user");
 /// ```
 ///
-pub fn set_systemd_target(target_name: String) {
+pub fn set_systemd_target(target_name: &str) {
     let mut command = Command::new("systemctl")
         .args(["isolate", &target_name])
         .spawn()

@@ -5,6 +5,7 @@ use std::path::{Path, PathBuf};
 ///
 /// ## Example
 /// ```rust
+/// use cosmoutils::modules::process_running::is_process_running;
 /// if is_process_running("firefox") {
 ///     // Code
 /// }
