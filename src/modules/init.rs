@@ -298,11 +298,11 @@ pub fn disable_systemd_service(service_name: &str, user_mode: bool) {
         }
     } else {
         let mut command = Command::new("systemctl")
-            .args(["--user", "disable", &service_name])
+            .args(["disable", &service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
-        let failed_msg = format!("{} {}", FAILED_ENABLE_MESSAGE, service_name);
+        let failed_msg = format!("{} {}", FAILED_DISABLE_MESSAGE, service_name);
 
         let status = command.wait().expect("Failed to run the command.");
 
