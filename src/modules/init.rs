@@ -132,8 +132,8 @@ pub fn disable_openrc_service(service_name: &str, user_mode: bool) {
             .args(["--user", "del", &service_name])
             .spawn()
             .expect("Failed to run");
-        let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
-        let failed_msg = format!("{} {}", FAILED_ENABLE_MESSAGE, service_name);
+        let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
+        let failed_msg = format!("{} {}", FAILED_DISABLE_MESSAGE, service_name);
 
         let status = command.wait().expect("Failed to run the command.");
 
@@ -147,8 +147,8 @@ pub fn disable_openrc_service(service_name: &str, user_mode: bool) {
             .args(["del", &service_name])
             .spawn()
             .expect("Failed to run");
-        let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
-        let failed_msg = format!("{} {}", FAILED_ENABLE_MESSAGE, service_name);
+        let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
+        let failed_msg = format!("{} {}", FAILED_DISABLE_MESSAGE, service_name);
 
         let status = command.wait().expect("Failed to run the command.");
 
@@ -286,8 +286,8 @@ pub fn disable_systemd_service(service_name: &str, user_mode: bool) {
             .args(["--user", "disable", &service_name])
             .spawn()
             .expect("Failed to run");
-        let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
-        let failed_msg = format!("{} {}", FAILED_ENABLE_MESSAGE, service_name);
+        let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
+        let failed_msg = format!("{} {}", FAILED_DISABLE_MESSAGE, service_name);
 
         let status = command.wait().expect("Failed to run the command.");
 
@@ -301,7 +301,7 @@ pub fn disable_systemd_service(service_name: &str, user_mode: bool) {
             .args(["disable", &service_name])
             .spawn()
             .expect("Failed to run");
-        let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
+        let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
         let failed_msg = format!("{} {}", FAILED_DISABLE_MESSAGE, service_name);
 
         let status = command.wait().expect("Failed to run the command.");
