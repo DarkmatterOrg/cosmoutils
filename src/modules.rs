@@ -8,5 +8,6 @@ pub mod is_root;
 pub mod msg;
 #[cfg(feature = "nixos")]
 pub mod nixos;
+#[cfg(feature = "notifications")]
 pub mod notifications;
 pub mod process_running;

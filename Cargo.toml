@@ -1,6 +1,6 @@
 [package]
 name = "cosmoutils"
-version = "0.2.3"
+version = "0.2.4"
 edition = "2024"
 repository = "https://github.com/DarkmatterOrg/cosmoutils"
 documentation = "https://docs.rs/cosmoutils/"
@@ -14,12 +14,13 @@ runit = []
 systemd = []
 dinit = []
 openrc = []
+notifications = ["dep:notify-rust"]
 
 [dependencies]
 cli_input = "1.0.4"
 colored = "3.0.0"
 directories = "6.0.0"
 libc = "0.2.172"
-notify-rust = "4.11.7"
+notify-rust = { version = "4.11.7", optional = true }
 regex = "1.11.1"
 which = "7.0.3"
