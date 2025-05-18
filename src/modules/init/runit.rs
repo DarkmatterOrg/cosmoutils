@@ -1,6 +1,7 @@
 use std::os::unix::fs;
 use crate::modules::init::{DISABLE_MESSAGE, ENABLE_MESSAGE, FAILED_DISABLE_MESSAGE, FAILED_ENABLE_MESSAGE};
 use crate::modules::msg::{error, success};
+use std::fs as standard_fs;
 
 /// Enable a runit service by making a symlink from /etc/sv to /var/service
 ///
