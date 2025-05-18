@@ -80,7 +80,7 @@ pub fn enable_openrc_service(service_name: &str, user_mode: bool) {
 
     if user_mode && Path::new(&format!("/etc/init.d/{}.{}", user, user)).exists() {
         let mut command = Command::new("rc-update")
-            .args(["--user", "add", &service_name])
+            .args(["--user", "add", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
@@ -95,7 +95,7 @@ pub fn enable_openrc_service(service_name: &str, user_mode: bool) {
         }
     } else {
         let mut command = Command::new("rc-update")
-            .args(["add", &service_name])
+            .args(["add", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
@@ -129,7 +129,7 @@ pub fn disable_openrc_service(service_name: &str, user_mode: bool) {
 
     if user_mode && Path::new(&format!("/etc/init.d/{}.{}", user, user)).exists() {
         let mut command = Command::new("rc-update")
-            .args(["--user", "del", &service_name])
+            .args(["--user", "del", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
@@ -144,7 +144,7 @@ pub fn disable_openrc_service(service_name: &str, user_mode: bool) {
         }
     } else {
         let mut command = Command::new("rc-update")
-            .args(["del", &service_name])
+            .args(["del", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
@@ -175,7 +175,7 @@ pub fn disable_openrc_service(service_name: &str, user_mode: bool) {
 ///
 pub fn enable_dinit_service(service_name: &str) {
     let mut command = Command::new("dinitctl")
-        .args(["enable", &service_name])
+        .args(["enable", service_name])
         .spawn()
         .expect("Failed to run");
     let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
@@ -205,7 +205,7 @@ pub fn enable_dinit_service(service_name: &str) {
 ///
 pub fn disable_dinit_service(service_name: &str) {
     let mut command = Command::new("dinitctl")
-        .args(["disable", &service_name])
+        .args(["disable", service_name])
         .spawn()
         .expect("Failed to run");
     let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
@@ -236,7 +236,7 @@ pub fn disable_dinit_service(service_name: &str) {
 pub fn enable_systemd_service(service_name: &str, user_mode: bool) {
     if user_mode {
         let mut command = Command::new("systemctl")
-            .args(["--user", "enable", &service_name])
+            .args(["--user", "enable", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
@@ -251,7 +251,7 @@ pub fn enable_systemd_service(service_name: &str, user_mode: bool) {
         }
     } else {
         let mut command = Command::new("systemctl")
-            .args(["enable", &service_name])
+            .args(["enable", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", ENABLE_MESSAGE, service_name);
@@ -283,7 +283,7 @@ pub fn enable_systemd_service(service_name: &str, user_mode: bool) {
 pub fn disable_systemd_service(service_name: &str, user_mode: bool) {
     if user_mode {
         let mut command = Command::new("systemctl")
-            .args(["--user", "disable", &service_name])
+            .args(["--user", "disable", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
@@ -298,7 +298,7 @@ pub fn disable_systemd_service(service_name: &str, user_mode: bool) {
         }
     } else {
         let mut command = Command::new("systemctl")
-            .args(["disable", &service_name])
+            .args(["disable", service_name])
             .spawn()
             .expect("Failed to run");
         let msg = format!("{} {}", DISABLE_MESSAGE, service_name);
@@ -324,7 +324,7 @@ pub fn disable_systemd_service(service_name: &str, user_mode: bool) {
 ///
 pub fn set_systemd_target(target_name: &str) {
     let mut command = Command::new("systemctl")
-        .args(["isolate", &target_name])
+        .args(["isolate", target_name])
         .spawn()
         .expect("Failed to run");
     let msg = format!("{} {}", SET_MESSAGE, target_name);

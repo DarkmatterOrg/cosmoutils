@@ -1,29 +1,25 @@
-use std::path::Path;
 use regex::Regex;
+use std::path::Path;
 
 /// get_os() gets the system name from /etc/os-release or in case of Bedrock from /bedrock/etc/os-release
-/// 
+///
 /// ## Example
 /// ```rust
 /// use cosmoutils::modules::detect_os::get_os;
 /// println!("OS: {}", get_os());
 /// ```
 ///
-pub fn get_os() -> String {
+pub fn get_os() -> Option<String> {
     let os_release_path = find_os_release();
 
-    let system_name = read_os_release(os_release_path.as_str());
-
-    system_name.unwrap_or("Unknown".to_string())
+    read_os_release(os_release_path.as_str())
 }
 
 fn find_os_release() -> String {
-    let os_release_path: &str;
-
-    let _path = if Path::new("/bedrock").exists() {
-        os_release_path = "/bedrock/etc/os-release";
+    let os_release_path = if Path::new("/bedrock").exists() {
+        "/bedrock/etc/os-release"
     } else {
-        os_release_path = "/etc/os-release";
+        "/etc/os-release"
     };
 
     os_release_path.to_string()
@@ -44,7 +40,10 @@ pub fn get_os_version() -> Option<String> {
     let re = Regex::new(r#"(?m)^VERSION_ID=(?:(?:"(.*?)")|(?:(.*)))$"#).ok()?;
     let captures = re.captures(&content)?;
 
-    captures.get(2).or(captures.get(1)).map(|m| m.as_str().to_string())
+    captures
+        .get(2)
+        .or(captures.get(1))
+        .map(|m| m.as_str().to_string())
 }
 
 /// Gets the value of ID using Regex
@@ -53,5 +52,8 @@ fn read_os_release(path: &str) -> Option<String> {
     let re = Regex::new(r#"(?m)^ID=(?:(?:"(.*?)")|(?:(.*)))$"#).ok()?;
     let captures = re.captures(&content)?;
 
-    captures.get(2).or(captures.get(1)).map(|m| m.as_str().to_string())
+    captures
+        .get(2)
+        .or(captures.get(1))
+        .map(|m| m.as_str().to_string())
 }
