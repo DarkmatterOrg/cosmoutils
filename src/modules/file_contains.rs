@@ -5,7 +5,7 @@ use std::fs;
 /// ## Example
 /// ```rust
 ///  use cosmoutils::modules::file_contains::does_file_contain;
-///  if does_file_contain("test.txt", "hello!") {
+///  if does_file_contain("/etc/os-release", "VERSION") {
 ///        // Code
 ///  }
 /// ```

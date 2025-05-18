@@ -1,3 +1,4 @@
+#[cfg(feature = "bedrock")]
 pub mod bedrock;
 pub mod detect_os;
 pub mod file_contains;
@@ -5,6 +6,7 @@ pub mod init;
 pub mod is_cmd_installed;
 pub mod is_root;
 pub mod msg;
+#[cfg(feature = "nixos")]
 pub mod nixos;
 pub mod notifications;
 pub mod process_running;

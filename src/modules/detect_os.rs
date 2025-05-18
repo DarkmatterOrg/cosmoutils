@@ -6,7 +6,9 @@ use std::path::Path;
 /// ## Example
 /// ```rust
 /// use cosmoutils::modules::detect_os::get_os;
-/// println!("OS: {}", get_os());
+/// if let Some(os_name) = get_os() {
+///     println!("OS: {}", os_name);
+/// }
 /// ```
 ///
 pub fn get_os() -> Option<String> {
@@ -30,7 +32,9 @@ fn find_os_release() -> String {
 /// ## Example
 /// ```rust
 /// use cosmoutils::modules::detect_os::get_os_version;
-/// println!("OS Version: {}", get_os_version());
+/// if let Some(os_version) = get_os_version() {
+///     println!("OS: {}", os_version);
+/// }
 /// ```
 ///
 pub fn get_os_version() -> Option<String> {

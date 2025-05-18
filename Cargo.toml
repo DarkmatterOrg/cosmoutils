@@ -1,11 +1,19 @@
 [package]
 name = "cosmoutils"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2024"
 repository = "https://github.com/DarkmatterOrg/cosmoutils"
 documentation = "https://docs.rs/cosmoutils/"
 description = "Useful utilities for writting Rust CLI tools"
 license = "MIT"
+
+[features]
+bedrock = []
+nixos = []
+runit = []
+systemd = []
+dinit = []
+openrc = []
 
 [dependencies]
 cli_input = "1.0.4"
