@@ -9,6 +9,7 @@ pub mod runit;
 #[cfg(feature = "openrc")]
 pub mod openrc;
 
+
 const DISABLE_MESSAGE: &str = "Disabled";
 const ENABLE_MESSAGE: &str = "Enabled";
 const FAILED_ENABLE_MESSAGE: &str = "Failed to enable";

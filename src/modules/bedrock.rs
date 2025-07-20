@@ -23,7 +23,7 @@ pub fn check_bedrock() -> bool {
 /// ## Example
 /// ```rust
 /// use cosmoutils::modules::bedrock::list_strata;
-/// println!("Count of stratums: {}", list_strata());
+/// println!("Count: {}", list_strata());
 /// ```
 ///
 pub fn list_strata() -> usize {

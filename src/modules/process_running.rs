@@ -1,7 +1,7 @@
 use std::fs;
 use std::path::{Path, PathBuf};
 
-/// Chec if a process is running
+/// Check if a process is running
 ///
 /// ## Example
 /// ```rust
