@@ -1,6 +1,6 @@
 [package]
 name = "cosmoutils"
-version = "0.2.6"
+version = "0.2.7"
 edition = "2024"
 repository = "https://github.com/DarkmatterOrg/cosmoutils"
 documentation = "https://docs.rs/cosmoutils/"
@@ -22,4 +22,4 @@ libc = "0.2.172"
 notify-rust = { version = "4.11.7", optional = true }
 regex = "1.11.1"
 spinners = "4.1.1"
-which = "7.0.3"
+which = "8.0.0"

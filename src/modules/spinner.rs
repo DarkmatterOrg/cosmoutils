@@ -1,4 +1,3 @@
-use std::str::FromStr;
 use spinners::{Spinner, Spinners};
 use std::thread::sleep;
 use std::time::Duration;
@@ -8,11 +7,12 @@ use std::time::Duration;
 ///     use cosmoutils::modules::spinner::create_spinner;
 ///
 ///     fn main() {
-///         create_spinner(10, "Loading...", "Dots12");
+///         create_spinner(1, "Loading...", "Dots12");
 ///     }
 /// ```
 pub fn create_spinner(seconds: u64, message: &str, spinner_name: &str) {
-    let spinner_enum = Spinners::from_str(spinner_name)
+    let spinner_enum = spinner_name
+        .parse::<Spinners>()
         .unwrap_or(Spinners::Dots12);
 
     let mut sp = Spinner::new(spinner_enum, message.into());

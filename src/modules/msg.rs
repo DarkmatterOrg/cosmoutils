@@ -1,4 +1,6 @@
+use std::fmt::Display;
 use colored::Colorize;
+use std::io::{self, Write};
 
 /// ERROR;
 ///
@@ -8,8 +10,9 @@ use colored::Colorize;
 /// error("Text");
 /// ```
 ///
-pub fn error(msg: &str) {
-    println!("{}: {}", "ERROR".bold().red(), msg);
+
+pub fn error<T: Display>(msg: T) {
+    let _ = writeln!(io::stderr(), "{}: {}", "ERROR".bold().red(), msg);
 }
 
 /// INFO:
@@ -20,7 +23,7 @@ pub fn error(msg: &str) {
 /// info("Text");
 /// ```
 ///
-pub fn info(msg: &str) {
+pub fn info<T: Display>(msg: T) {
     println!("{}: {}", "INFO".bold().cyan(), msg);
 }
 
@@ -32,7 +35,7 @@ pub fn info(msg: &str) {
 /// notice("Text");
 /// ```
 ///
-pub fn notice(msg: &str) {
+pub fn notice<T: Display>(msg: T) {
     println!("{}: {}", "NOTICE".bold().blue(), msg);
 }
 
@@ -44,7 +47,7 @@ pub fn notice(msg: &str) {
 /// warn("Text");
 /// ```
 ///
-pub fn warn(msg: &str) {
+pub fn warn<T: Display>(msg: T) {
     println!("{}: {}", "WARN".bold().yellow(), msg);
 }
 
@@ -56,7 +59,7 @@ pub fn warn(msg: &str) {
 /// suggest("Text");
 /// ```
 ///
-pub fn suggest(msg: &str) {
+pub fn suggest<T: Display>(msg: T) {
     println!("{}: {}", "SUGGEST".bold().magenta(), msg);
 }
 
@@ -68,6 +71,6 @@ pub fn suggest(msg: &str) {
 /// success("Text");
 /// ```
 ///
-pub fn success(msg: &str) {
+pub fn success<T: Display>(msg: T) {
     println!("{}: {}", "SUCCESS".bold().green(), msg);
 }
